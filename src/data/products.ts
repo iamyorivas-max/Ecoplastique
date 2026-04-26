@@ -1,3 +1,12 @@
+export interface ProductSection {
+  type: 'features' | 'info-block' | 'specs' | 'image-text';
+  title?: string;
+  content?: string;
+  items?: string[];
+  image?: string;
+  reverse?: boolean;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -8,6 +17,7 @@ export interface Product {
   image: string;
   benefits: string[];
   specs: { [key: string]: string };
+  sections?: ProductSection[];
 }
 
 export const products: Product[] = [
@@ -30,7 +40,16 @@ export const products: Product[] = [
       "Épaisseur": "1.5mm - 2mm",
       "Entretien": "Simple coup d'éponge",
       "Usage": "Intérieur / Extérieur"
-    }
+    },
+    sections: [
+      {
+        type: 'image-text',
+        title: "Comment prendre vos mesures ?",
+        content: "Pour une nappe parfaite, mesurez la longueur et la largeur de votre table. Nous ajoutons automatiquement une marge de précision lors de la découpe laser pour garantir un ajustement impeccable après la stabilisation naturelle du PVC.",
+        image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=800&auto=format&fit=crop",
+        reverse: false
+      }
+    ]
   },
   {
     id: "protege-matelas",
@@ -51,7 +70,14 @@ export const products: Product[] = [
       "Fixation": "Bonnets élastiqués",
       "Certification": "Oeko-Tex Standard 100",
       "Entretien": "Lavable à 60°C"
-    }
+    },
+    sections: [
+      {
+        type: 'info-block',
+        title: "Technologie Anti-Acariens",
+        content: "Notre membrane protectrice est certifiée Oeko-Tex. Elle empêche physiquement le passage des acariens et de la poussière tout en laissant circuler l'air pour éviter la transpiration nocturne."
+      }
+    ]
   },
   {
     id: "oreiller-cervical",

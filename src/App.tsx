@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Header, Hero, Benefits, Footer } from './components/Common';
 import { ProductCard } from './components/ProductCard';
+import { LogoMarquee } from './components/LogoMarquee';
 import { Testimonials } from './components/Testimonials';
 import ProductPage from './components/ProductPage';
 import { products } from './data/products';
@@ -43,6 +44,8 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <LogoMarquee />
 
       <Benefits />
       <Testimonials />

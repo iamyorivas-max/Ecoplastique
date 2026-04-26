@@ -110,7 +110,7 @@ export default function ProductPage() {
             </div>
 
             {/* Technical Specs */}
-            <div className="bg-slate-50 p-10 rounded-[2rem] border border-slate-100">
+            <div className="bg-slate-50 p-10 rounded-[2rem] border border-slate-100 mb-12">
               <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-8 pb-4 border-b border-slate-200">Spécifications</h3>
               <dl className="grid grid-cols-1 gap-y-8">
                 {Object.entries(product.specs).map(([key, value]) => (
@@ -123,6 +123,36 @@ export default function ProductPage() {
             </div>
           </motion.div>
         </div>
+
+        {/* Dynamic Sections */}
+        {product.sections?.map((section, idx) => (
+          <motion.section 
+            key={idx}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className={`py-20 border-t border-slate-100 ${section.type === 'image-text' ? 'lg:grid lg:grid-cols-2 lg:gap-20 items-center' : ''}`}
+          >
+            {section.type === 'image-text' && (
+              <>
+                <div className={`${section.reverse ? 'lg:order-2' : ''} mb-10 lg:mb-0`}>
+                  <img src={section.image} alt={section.title} className="rounded-[2.5rem] shadow-xl w-full aspect-video object-cover" />
+                </div>
+                <div className={section.reverse ? 'lg:order-1' : ''}>
+                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-6 tracking-tighter">{section.title}</h2>
+                  <p className="text-slate-500 text-lg font-medium leading-relaxed">{section.content}</p>
+                </div>
+              </>
+            )}
+            
+            {section.type === 'info-block' && (
+              <div className="max-w-3xl mx-auto text-center">
+                <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tighter">{section.title}</h2>
+                <p className="text-slate-500 text-lg font-medium leading-relaxed">{section.content}</p>
+              </div>
+            )}
+          </motion.section>
+        ))}
       </main>
 
       <section className="bg-slate-900 py-24 mb-20">

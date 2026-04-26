@@ -5,7 +5,13 @@ import { Link } from 'react-router-dom';
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-header">
+    <>
+      <div className="bg-primary text-white py-2 px-4 text-center">
+        <p className="text-[10px] font-black uppercase tracking-[0.3em]">
+          ✨ Livraison gratuite partout au Maroc sur tous les produits ✨
+        </p>
+      </div>
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-header">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex justify-between items-center h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2">
@@ -41,6 +47,7 @@ export function Header() {
         </div>
       </div>
     </header>
+    </>
   );
 }
 
