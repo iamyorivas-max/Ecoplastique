@@ -14,38 +14,38 @@ export function ProductCard({ product }: ProductCardProps) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group flex flex-col bg-zinc-900 border border-zinc-800 hover:border-primary transition-all duration-500 overflow-hidden"
+      className="group flex flex-col"
     >
-      <Link to={`/product/${product.id}`} className="block relative aspect-[4/5] overflow-hidden">
+      <Link to={`/product/${product.id}`} className="block relative mb-8 overflow-hidden aspect-[3/4] rounded-sm bg-stone-100">
         <img 
           src={product.image} 
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100"
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
         />
-        <div className="absolute top-4 left-4">
-          <span className="bg-primary text-black text-[9px] font-black uppercase px-3 py-1 tracking-widest shadow-brutalist">
-            {product.category || 'Premium'}
-          </span>
+        <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/20 transition-colors duration-500"></div>
+        <div className="absolute bottom-6 left-6 right-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex justify-center">
+            <span className="bg-white text-stone-900 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl">
+                Détails
+            </span>
         </div>
       </Link>
       
-      <div className="p-8">
-        <div className="flex justify-between items-start mb-6">
-          <div>
-            <h3 className="text-xl font-display font-bold text-white group-hover:text-primary transition-colors leading-tight mb-2 uppercase tracking-tighter">
-              {product.name}
-            </h3>
-            <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">{product.title}</p>
-          </div>
-          <span className="text-xl font-display font-black text-primary italic leading-none">{product.price}</span>
+      <div className="flex flex-col gap-2">
+        <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-stone-400 group-hover:text-primary transition-colors">
+          {product.title}
+        </h2>
+        <h3 className="text-2xl font-serif italic text-stone-900">
+          {product.name}
+        </h3>
+        <div className="flex items-center justify-between pt-4 border-t border-stone-200 mt-2">
+            <span className="text-lg font-serif italic text-stone-900">{product.price}</span>
+            <Link 
+                to={`/product/${product.id}`}
+                className="text-[10px] font-bold uppercase tracking-widest border-b border-stone-900 pb-0.5 hover:text-primary hover:border-primary transition-all"
+            >
+                Acheter
+            </Link>
         </div>
-        
-        <Link 
-          to={`/product/${product.id}`}
-          className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-white group-hover:text-primary border-b-2 border-transparent group-hover:border-primary pb-1 transition-all"
-        >
-          View Specs
-        </Link>
       </div>
     </motion.div>
   );
