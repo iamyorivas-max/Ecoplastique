@@ -11,43 +11,40 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group cursor-pointer flex flex-col"
+      className="group flex flex-col bg-zinc-900 border border-zinc-800 hover:border-primary transition-all duration-500 overflow-hidden"
     >
-      <Link to={`/product/${product.id}`} className="block">
-        <div className="aspect-square bg-slate-100 rounded-3xl mb-6 overflow-hidden relative border border-slate-100 shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
-          <div className="absolute top-4 left-4 bg-white px-3 py-1.5 rounded-lg text-[10px] font-black uppercase shadow-sm z-10 tracking-widest border border-slate-50">
-            Premium
-          </div>
-          <img 
-            src={product.image} 
-            alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          />
-        </div>
-        
-        <div className="flex flex-col gap-1 mb-4">
-          <h2 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-primary transition-colors">
-            {product.title}
-          </h2>
-          <h3 className="text-xl font-black text-slate-800 leading-tight">
-            {product.name}
-          </h3>
-          <p className="text-[13px] text-slate-500 font-medium line-clamp-1">
-            {product.shortDescription}
-          </p>
+      <Link to={`/product/${product.id}`} className="block relative aspect-[4/5] overflow-hidden">
+        <img 
+          src={product.image} 
+          alt={product.name}
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100"
+        />
+        <div className="absolute top-4 left-4">
+          <span className="bg-primary text-black text-[9px] font-black uppercase px-3 py-1 tracking-widest shadow-brutalist">
+            {product.category || 'Premium'}
+          </span>
         </div>
       </Link>
       
-      <div className="mt-auto flex items-center justify-between gap-4 pt-4 border-t border-slate-50">
-        <span className="text-xl font-black text-slate-900">{product.price}</span>
+      <div className="p-8">
+        <div className="flex justify-between items-start mb-6">
+          <div>
+            <h3 className="text-xl font-display font-bold text-white group-hover:text-primary transition-colors leading-tight mb-2 uppercase tracking-tighter">
+              {product.name}
+            </h3>
+            <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">{product.title}</p>
+          </div>
+          <span className="text-xl font-display font-black text-primary italic leading-none">{product.price}</span>
+        </div>
+        
         <Link 
           to={`/product/${product.id}`}
-          className="flex-grow py-3 bg-slate-50 text-slate-700 text-[11px] font-black rounded-xl border border-slate-100 hover:bg-primary hover:text-white transition-all uppercase tracking-widest text-center"
+          className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-white group-hover:text-primary border-b-2 border-transparent group-hover:border-primary pb-1 transition-all"
         >
-          Voir le produit
+          View Specs
         </Link>
       </div>
     </motion.div>

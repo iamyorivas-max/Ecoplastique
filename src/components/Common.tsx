@@ -6,42 +6,41 @@ import { Link } from 'react-router-dom';
 export function Header() {
   return (
     <>
-      <div className="bg-primary text-white py-2 px-4 text-center">
-        <p className="text-[10px] font-black uppercase tracking-[0.3em]">
-          ✨ Livraison gratuite partout au Maroc sur tous les produits ✨
+      <div className="bg-primary text-black py-2 px-4 text-center border-b border-black">
+        <p className="text-[9px] font-black uppercase tracking-[0.4em]">
+          SYSTEM STATUS: FREE SHIPPING ENABLED // MOROCCO WIDE
         </p>
       </div>
-      <header className="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-header">
+      <header className="sticky top-0 z-50 bg-zinc-950 border-b border-zinc-800">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex justify-between items-center h-16 md:h-20">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">E</div>
-            <span className="text-xl font-extrabold tracking-tight uppercase text-slate-800">
-              ECOPLASTIQUE
+          <Link to="/" className="flex items-center gap-3">
+            <span className="text-xl font-display font-bold tracking-tighter text-white">
+              ECO<span className="text-primary tracking-normal">PLASTIQUE</span>
             </span>
           </Link>
           
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-500 uppercase tracking-widest">
-            <Link to="/" className="text-primary transition-colors">Accueil</Link>
-            <a href="#products" className="hover:text-primary transition-colors">Produits</a>
-            <a href="#benefits" className="hover:text-primary transition-colors">Avantages</a>
+          <nav className="hidden md:flex items-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">
+            <Link to="/" className="hover:text-primary transition-colors">Index</Link>
+            <a href="#products" className="hover:text-primary transition-colors">Catalog</a>
+            <a href="#benefits" className="hover:text-primary transition-colors">Specs</a>
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <a 
               href="https://wa.me/212600000000" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-sm hover:scale-105 transition-transform"
+              className="hidden sm:flex items-center gap-3 border border-zinc-800 px-6 py-2.5 text-[10px] font-black uppercase tracking-widest hover:border-primary hover:text-primary transition-all"
             >
-              <Phone className="w-4 h-4 fill-current" />
-              <span>Commander via WhatsApp</span>
+              <Phone className="w-4 h-4" />
+              <span>Support</span>
             </a>
             <Link 
               to="/#products"
-              className="md:hidden bg-primary text-white p-2 rounded-full hover:bg-primary-hover transition-colors"
+              className="md:hidden text-primary"
             >
-              <ShoppingCart className="w-5 h-5" />
+              <ShoppingCart className="w-6 h-6" />
             </Link>
           </div>
         </div>
@@ -53,55 +52,47 @@ export function Header() {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-slate-50 border-b border-slate-100">
+    <section className="relative overflow-hidden pt-12 pb-24 lg:pt-32 lg:pb-40 bg-zinc-950 border-b border-zinc-800">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-12 lg:text-left xl:col-span-7"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="sm:text-center md:max-w-4xl md:mx-auto lg:col-span-8 lg:text-left"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-slate-800 leading-[0.85] tracking-tighter mb-8">
-              Des produits pratiques pour votre <span className="text-primary">confort</span> au quotidien
+            <div className="inline-block border border-primary text-primary px-4 py-1 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
+              Premium Medical & Home OS
+            </div>
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-bold text-white leading-[0.85] mb-10 tracking-tighter">
+              HARDWARE <br/> FOR <span className="text-primary italic">LIVING</span>
             </h1>
-            <p className="text-slate-500 text-lg md:text-xl font-medium leading-tight mb-10 max-w-xl sm:mx-auto lg:mx-0">
-              Qualité premium certifiée et sur-mesure pour votre intérieur. Améliorez votre bien-être avec nos solutions durables.
+            <p className="text-zinc-500 text-lg md:text-xl font-medium leading-relaxed mb-12 max-w-xl sm:mx-auto lg:mx-0 uppercase tracking-tight">
+              High-performance orthopedic equipment and custom protection systems. engineered in Morocco.
             </p>
-            <div className="flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
+            <div className="flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-6">
               <a
                 href="#products"
-                className="bg-primary text-white px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-lg shadow-primary/30 hover:scale-105 transition-transform text-center inline-block"
+                className="bg-primary text-black px-12 py-5 font-black text-xs uppercase tracking-[0.3em] hover:bg-white transition-all text-center inline-block shadow-brutalist active:translate-x-1 active:translate-y-1"
               >
-                Découvrir nos produits
+                Access Catalog
               </a>
-            </div>
-            
-            <div className="mt-12 flex items-center gap-8 text-[10px] font-black uppercase tracking-widest text-slate-400 sm:justify-center lg:justify-start">
-              <div className="flex items-center gap-2">
-                <Truck className="w-4 h-4 text-primary" /> Livraison Maroc
-              </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-primary" /> Paiement à réception
-              </div>
             </div>
           </motion.div>
           
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-12 relative lg:mt-0 lg:col-span-12 xl:col-span-5 hidden xl:block"
+            initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="mt-20 relative lg:mt-0 lg:col-span-4 hidden lg:block"
           >
-            <div className="relative h-[500px] w-full bg-primary/10 flex items-center justify-center rounded-3xl">
-              <div className="w-80 h-64 bg-white rounded-2xl shadow-2xl rotate-3 border-[12px] border-white overflow-hidden">
-                <img
-                  className="w-full h-full object-cover"
-                  src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=1200&auto=format&fit=crop"
-                  alt="Intérieur maison confortable"
-                />
-              </div>
-              <div className="absolute top-20 right-10 w-24 h-24 bg-white/50 backdrop-blur-sm rounded-full blur-2xl"></div>
+            <div className="relative aspect-[4/5] bg-zinc-900 border-4 border-zinc-800 overflow-hidden shadow-brutalist">
+              <img
+                className="w-full h-full object-cover grayscale opacity-80 mix-blend-luminosity"
+                src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1200&auto=format&fit=crop"
+                alt="Product High Tech"
+              />
+              <div className="absolute inset-0 bg-primary/10"></div>
             </div>
           </motion.div>
         </div>
@@ -113,39 +104,39 @@ export function Hero() {
 export function Benefits() {
   const features = [
     {
-      title: "Livraison Rapide",
-      description: "Expédition sous 24/48h",
+      title: "Logistics [01]",
+      description: "Priority delivery across 12 zones.",
       icon: <Truck className="w-5 h-5" />
     },
     {
-      title: "Paiement Simple",
-      description: "Cash à la livraison",
+      title: "Security [02]",
+      description: "Payment verified on reception.",
       icon: <ShoppingCart className="w-5 h-5" />
     },
     {
-      title: "Qualité Premium",
-      description: "Produits certifiés",
+      title: "Quality [03]",
+      description: "Industrial grade certifications.",
       icon: <ShieldCheck className="w-5 h-5" />
     },
     {
-      title: "Support 7j/7",
-      description: "Conseils via WhatsApp",
+      title: "Support [04]",
+      description: "24/7 technical assistance line.",
       icon: <Headphones className="w-5 h-5" />
     }
   ];
 
   return (
-    <section id="benefits" className="py-20 bg-white border-t border-slate-100">
+    <section id="benefits" className="py-24 bg-zinc-950 text-zinc-100 border-y border-zinc-800 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border-l border-t border-zinc-800">
           {features.map((feature, i) => (
-            <div key={i} className="flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+            <div key={i} className="flex flex-col gap-8 p-10 border-r border-b border-zinc-800 hover:bg-zinc-900 transition-colors group">
+              <div className="text-primary w-12 h-12 flex items-center justify-center border border-zinc-800 group-hover:border-primary transition-colors">
                 {feature.icon}
               </div>
               <div>
-                <h3 className="text-sm font-black uppercase text-slate-800 tracking-tight">{feature.title}</h3>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{feature.description}</p>
+                <h3 className="text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-primary">{feature.title}</h3>
+                <p className="text-zinc-500 font-bold uppercase text-[11px] leading-tight">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -157,47 +148,45 @@ export function Benefits() {
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-white py-16">
+    <footer className="bg-zinc-950 text-white py-24 border-t border-zinc-800">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
-          <div className="flex flex-col gap-6">
-            <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-[0.3em]">À Propos</h4>
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-primary rounded flex items-center justify-center text-[10px] font-bold">E</div>
-              <span className="text-lg font-black uppercase tracking-tighter">ECOPLASTIQUE</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+          <div className="flex flex-col gap-10">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl font-display font-bold tracking-tighter">
+                ECO<span className="text-primary">PLASTIQUE</span>
+              </span>
             </div>
-            <p className="text-slate-400 text-sm font-medium leading-relaxed max-w-xs">
-              Votre partenaire pour un foyer plus confortable et mieux protégé. Spécialiste du sur-mesure au Maroc.
+            <p className="text-zinc-500 text-xs font-medium uppercase leading-relaxed max-w-xs tracking-tight">
+              Industrial grade home comfort systems. Engineered for durability. Delivered nationwide.
             </p>
           </div>
           
-          <div className="flex flex-col gap-6 border-slate-800 md:border-l md:pl-12 lg:pl-20">
-            <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-[0.3em]">Navigation</h4>
-            <ul className="flex flex-col gap-4 text-xs font-bold uppercase tracking-widest">
-              <li><Link to="/" className="text-primary hover:text-white transition-colors">Accueil</Link></li>
-              <li><a href="#products" className="hover:text-primary transition-colors">Produits</a></li>
-              <li><a href="#benefits" className="hover:text-primary transition-colors">Avantages</a></li>
+          <div className="flex flex-col gap-10 border-zinc-900 md:border-l md:pl-20">
+            <h4 className="text-[10px] font-black uppercase text-zinc-600 tracking-[0.4em]">Directory</h4>
+            <ul className="flex flex-col gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400">
+              <li><Link to="/" className="text-white hover:text-primary transition-colors">Core Collection</Link></li>
+              <li><a href="#products" className="hover:text-primary transition-colors">Warehouse</a></li>
+              <li><a href="#benefits" className="hover:text-primary transition-colors">Protocol</a></li>
             </ul>
           </div>
           
-          <div className="flex flex-col gap-6">
-            <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-[0.3em]">Contact</h4>
-            <div className="flex flex-col gap-4 text-xs font-bold uppercase tracking-widest text-slate-300">
-              <span className="hover:text-primary transition-colors cursor-pointer">Contact@ecoplastique.ma</span>
-              <span className="hover:text-primary transition-colors cursor-pointer">+212 600 000 000</span>
-              <div className="pt-4">
-                <div className="bg-slate-800 p-4 rounded-2xl inline-flex items-center gap-6">
-                   <span className="text-[10px] font-medium leading-none text-slate-400">Des questions ?</span>
-                   <a 
-                    href="https://wa.me/212600000000"
-                    className="bg-white text-slate-900 px-4 py-2 rounded-full text-[10px] font-black uppercase hover:scale-105 transition-transform"
-                   >
-                     Chatter
-                   </a>
-                </div>
+          <div className="flex flex-col gap-10">
+            <h4 className="text-[10px] font-black uppercase text-zinc-600 tracking-[0.4em]">Comms</h4>
+            <div className="flex flex-col gap-6 text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-400">
+              <span className="hover:text-primary transition-colors cursor-pointer">ADMIN@ECOPLASTIQUE.MA</span>
+              <div className="flex flex-col gap-2">
+                <span className="text-[9px] text-zinc-600 uppercase tracking-widest font-black">Hotline / WhatsApp</span>
+                <span className="text-2xl font-display font-bold text-white tracking-tighter">+212 600 000 000</span>
               </div>
             </div>
           </div>
+        </div>
+        
+        <div className="mt-32 pt-10 border-t border-zinc-900 text-center">
+            <p className="text-[9px] font-black text-zinc-700 uppercase tracking-[0.5em]">
+                MOD-2026 // ALL RIGHTS RESERVED // ECOPLASTIQUE.
+            </p>
         </div>
       </div>
     </footer>

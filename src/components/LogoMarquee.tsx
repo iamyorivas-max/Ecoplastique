@@ -2,52 +2,46 @@ import React from 'react';
 import { motion } from 'motion/react';
 
 const brands = [
-  "L'HÔTEL ROYAL", "CLINIQUE SUD", "VILLA CONFORT", "ECO-STAY", "MODERN HOME", 
-  "L'HÔTEL ROYAL", "CLINIQUE SUD", "VILLA CONFORT", "ECO-STAY", "MODERN HOME"
+  "SAMSUNG HEALTH", "DYSON HOME", "OMRON MEDICAL", "PHILLIPS CARE", "BEURER", "CASIO MEDIC",
+  "SAMSUNG HEALTH", "DYSON HOME", "OMRON MEDICAL", "PHILLIPS CARE", "BEURER", "CASIO MEDIC"
 ];
 
 export function LogoMarquee() {
   return (
-    <section className="py-12 bg-white border-y border-slate-50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-8">
-        <h4 className="text-[10px] font-black uppercase text-slate-400 tracking-[0.3em] text-center">
-          Ils ont fait confiance à Ecoplastique
+    <section className="py-24 bg-zinc-950 border-b border-zinc-800 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-16">
+        <h4 className="text-[10px] font-black uppercase text-zinc-600 tracking-[0.6em] text-center">
+          SYSTEM_PARTNERS // CERTIFIED
         </h4>
       </div>
       
-      <div className="relative flex overflow-x-hidden">
+      <div className="relative flex overflow-x-hidden border-y border-zinc-900 bg-zinc-900/50 py-10">
         <motion.div 
-          className="flex whitespace-nowrap gap-12 md:gap-24 items-center"
+          className="flex whitespace-nowrap gap-20 md:gap-40 items-center"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ 
             ease: "linear", 
-            duration: 25, 
+            duration: 35, 
             repeat: Infinity 
           }}
         >
-          {/* First set of logos */}
           {brands.map((brand, i) => (
             <span 
               key={i} 
-              className="text-2xl md:text-4xl font-black text-slate-200 uppercase tracking-tighter hover:text-primary transition-colors cursor-default"
+              className="text-4xl md:text-7xl font-display font-bold text-zinc-800 uppercase tracking-tighter hover:text-primary transition-colors cursor-default"
             >
               {brand}
             </span>
           ))}
-          {/* Duplicate set for seamless loop */}
           {brands.map((brand, i) => (
             <span 
               key={`dup-${i}`} 
-              className="text-2xl md:text-4xl font-black text-slate-200 uppercase tracking-tighter hover:text-primary transition-colors cursor-default"
+              className="text-4xl md:text-7xl font-display font-bold text-zinc-800 uppercase tracking-tighter hover:text-primary transition-colors cursor-default"
             >
               {brand}
             </span>
           ))}
         </motion.div>
-        
-        {/* Gradient overlays for smooth fade edges */}
-        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
-        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
       </div>
     </section>
   );

@@ -1,35 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=JetBrains+Mono:wght@100..800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #8EC63F;
-  --color-primary-hover: #7ab335;
-  --color-slate-50: #f8fafc;
-  --color-slate-100: #f1f5f9;
-  --color-slate-200: #e2e8f0;
-  --color-slate-400: #94a3b8;
-  --color-slate-500: #64748b;
-  --color-slate-700: #334155;
-  --color-slate-800: #1e293b;
-  --color-slate-900: #0f172a;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #CCFF00;
+  --color-primary-hover: #b3df00;
+  --color-zinc-50: #fafafa;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-900: #09090b;
+  --color-zinc-950: #020617;
+  --font-display: "Syncopate", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "JetBrains Mono", ui-monospace, monospace;
 }
 
 @layer base {
   body {
-    @apply font-sans text-slate-900 bg-white antialiased;
-  }
-  
-  h1, h2, h3, h4 {
-    @apply tracking-tighter font-black;
+    @apply font-mono text-zinc-100 bg-zinc-950 antialiased;
   }
 }
 
-.shadow-soft {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+.brutalist-card {
+  @apply bg-zinc-900 border border-zinc-800 rounded-none transition-all duration-300;
 }
 
-.shadow-header {
-  box-shadow: 0 1px 0 0 rgba(15, 23, 42, 0.05);
+.brutalist-button {
+  @apply bg-primary text-black font-bold uppercase tracking-tighter rounded-none transition-all duration-200 border-2 border-primary hover:bg-transparent hover:text-primary active:translate-x-1 active:translate-y-1;
+}
+
+.shadow-brutalist {
+  box-shadow: 4px 4px 0px 0px #CCFF00;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
