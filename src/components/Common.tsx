@@ -1,103 +1,136 @@
 import React from 'react';
-import { ShoppingCart, Phone, Truck, ShieldCheck, Headphones } from 'lucide-react';
+import { ShoppingCart, Phone, Truck, ShieldCheck, Headphones, Home, Search, User } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 
 export function Header() {
   return (
     <>
-      <div className="bg-stone-900 text-stone-100 py-2.5 px-4 text-center border-b border-stone-800">
-        <p className="text-[10px] font-medium uppercase tracking-[0.4em]">
-          L'excellence du confort • Livraison Gratuite partout au Maroc
+      <div className="bg-[#1e293b] text-white py-2 px-4 text-center">
+        <p className="text-[10px] font-bold uppercase tracking-[0.25em]">
+          Livraison gratuite partout au Maroc sur tous les produits
         </p>
       </div>
-      <header className="sticky top-0 z-50 bg-stone-50/80 backdrop-blur-xl border-b border-stone-200/50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="flex justify-between items-center h-20 md:h-24">
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-100 h-20 flex items-center">
+        <div className="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
+          <button className="p-2 -ml-2 text-slate-800" aria-label="Menu">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h10M4 18h16" />
+            </svg>
+          </button>
+          
           <Link to="/" className="flex items-center gap-3">
-            <span className="text-2xl font-serif italic font-bold tracking-tighter text-stone-900">
-              Ecoplastique<span className="text-primary italic">.</span>
+            <div className="w-8 h-8 flex items-center justify-center">
+              <div className="w-6 h-6 border-2 border-primary rotate-45 flex items-center justify-center">
+                <div className="w-3 h-3 bg-primary"></div>
+              </div>
+            </div>
+            <span className="text-3xl font-black tracking-tighter text-slate-900">
+              Ecoplastique
             </span>
           </Link>
           
-          <nav className="hidden md:flex items-center gap-12 text-[11px] font-bold uppercase tracking-[0.2em] text-stone-500">
-            <Link to="/" className="text-stone-900 border-b border-stone-900 pb-1">Collection</Link>
-            <a href="#products" className="hover:text-primary transition-colors">Boutique</a>
-            <a href="#benefits" className="hover:text-primary transition-colors">Engagement</a>
-          </nav>
-
-          <div className="flex items-center gap-6">
-            <a 
-              href="https://wa.me/212600000000" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-3 border border-stone-300 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:border-primary hover:text-primary transition-all"
-            >
-              <Phone className="w-4 h-4" />
-              <span>Assistance</span>
-            </a>
-            <Link 
-              to="/#products"
-              className="md:hidden text-stone-900"
-            >
-              <ShoppingCart className="w-6 h-6" />
-            </Link>
+          <div className="relative p-2 text-slate-800">
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span className="absolute top-1 right-1 bg-primary text-white text-[9px] font-black w-4 h-4 flex items-center justify-center rounded-full pointer-events-none">
+              0
+            </span>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
     </>
   );
 }
 
+const slides = [
+  {
+    title: "TOP TRENDS",
+    subtitle: "NEW ARRIVALS",
+    suffix: "Collection",
+    desc: "International Delivery From Just $99.00 !",
+    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop",
+    color: "bg-[#FFDA79]",
+    textColor: "text-slate-900"
+  },
+  {
+    title: "SUMMER SALE",
+    subtitle: "EXCLUSIVE DEALS",
+    suffix: "Up to 50% Off",
+    desc: "Update your wardrobe with the latest styles.",
+    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop",
+    color: "bg-[#81ecec]",
+    textColor: "text-slate-900"
+  },
+  {
+    title: "HOME COMFORT",
+    subtitle: "PREMIUM LITERIE",
+    suffix: "New Design",
+    desc: "Discover the secret of a perfect night sleep.",
+    image: "https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1200&auto=format&fit=crop",
+    color: "bg-[#fab1a0]",
+    textColor: "text-white"
+  },
+  {
+    title: "TECH SAVVY",
+    subtitle: "MODERN LIVING",
+    suffix: "Smart Solutions",
+    desc: "Innovative products for your daily comfort.",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop",
+    color: "bg-[#dfe6e9]",
+    textColor: "text-slate-900"
+  }
+];
+
 export function Hero() {
+  const [current, setCurrent] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative overflow-hidden pt-12 pb-24 lg:pt-32 lg:pb-40 bg-stone-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="sm:text-center md:max-w-3xl md:mx-auto lg:col-span-7 lg:text-left"
-          >
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-light text-stone-900 leading-[0.9] mb-10">
-              Votre foyer deserve <br/> l'<span className="italic font-medium">exceptionnel</span>
-            </h1>
-            <p className="text-stone-500 text-lg md:text-xl font-light italic leading-relaxed mb-12 max-w-xl sm:mx-auto lg:mx-0">
-              Une sélection curatée de produits de confort médical et protection sur-mesure pour sublimer votre quotidien.
-            </p>
-            <div className="flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-6">
-              <a
-                href="#products"
-                className="bg-stone-900 text-white px-12 py-5 rounded-full font-bold text-xs uppercase tracking-[0.3em] hover:bg-primary transition-all text-center inline-block shadow-2xl"
-              >
-                Explorer la boutique
-              </a>
+    <section className="relative overflow-hidden h-[550px] md:h-[650px]">
+      <div className="flex h-full transition-transform duration-1000 cubic-bezier(0.4, 0, 0.2, 1)" style={{ transform: `translateX(-${current * 100}%)` }}>
+        {slides.map((slide, i) => (
+          <div key={i} className={`min-w-full h-full relative ${slide.color}`}>
+            {/* Background Image - Full Cover */}
+            <div className="absolute inset-0">
+              <img src={slide.image} className="w-full h-full object-cover" alt={slide.subtitle} />
+              {/* Overlay for contrast */}
+              <div className="absolute inset-0 bg-black/10"></div>
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-transparent via-transparent to-black/30"></div>
             </div>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="mt-20 relative lg:mt-0 lg:col-span-5 hidden lg:block"
-          >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[4rem] border-[16px] border-white shadow- editorial">
-              <img
-                className="w-full h-full object-cover"
-                src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1200&auto=format&fit=crop"
-                alt="Confort Premium"
-              />
-              <div className="absolute inset-0 bg-stone-900/10 mix-blend-multiply"></div>
+
+            <div className="max-w-7xl mx-auto h-full flex items-center justify-center md:justify-end relative z-10 px-8">
+              <div className="flex flex-col items-center md:items-end text-center md:text-right max-w-xl">
+                <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${slide.textColor} opacity-90 mb-4 drop-shadow-sm`}>{slide.title}</span>
+                <h2 className={`text-5xl md:text-8xl font-black ${slide.textColor} leading-[0.8] tracking-tighter mb-2 drop-shadow-md`}>{slide.subtitle}</h2>
+                <h3 className={`text-2xl md:text-4xl font-black ${slide.textColor} opacity-90 mb-6 drop-shadow-sm`}>{slide.suffix}</h3>
+                <p className={`text-xs md:text-sm italic font-medium ${slide.textColor} opacity-80 mb-10 max-w-xs md:max-w-none`}>{slide.desc}</p>
+                <a href="#products" className="inline-block bg-primary text-white px-12 py-5 rounded-md font-bold text-[10px] uppercase tracking-[0.2em] shadow-2xl shadow-primary/20 hover:scale-105 transition-all active:scale-95">
+                  Shop Now
+                </a>
+              </div>
             </div>
-            {/* Decal element */}
-            <div className="absolute -bottom-10 -left-10 bg-primary text-white p-10 rounded-full w-40 h-40 flex flex-col items-center justify-center text-center rotate-12 shadow-xl border-4 border-white">
-              <span className="text-[10px] font-black uppercase tracking-widest">Qualité</span>
-              <span className="text-2xl font-serif italic">Certifiée</span>
-            </div>
-          </motion.div>
-        </div>
+          </div>
+        ))}
+      </div>
+      
+      {/* Pagination dots precisely as requested */}
+      <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-3">
+        {slides.map((_, i) => (
+          <button 
+            key={i} 
+            onClick={() => setCurrent(i)}
+            className={`w-3 h-3 rounded-full border-2 border-white transition-all ${current === i ? "bg-white scale-125" : "bg-transparent opacity-50"}`}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
@@ -106,39 +139,39 @@ export function Hero() {
 export function Benefits() {
   const features = [
     {
-      title: "Logistique D'Excellence",
-      description: "Livraison offerte à domicile",
+      title: "Livraison Rapide",
+      description: "Expédition sous 24/48h",
       icon: <Truck className="w-5 h-5" />
     },
     {
-      title: "Sérénité Totale",
-      description: "Paiement à la livraison",
+      title: "Paiement Simple",
+      description: "Cash à la livraison",
       icon: <ShoppingCart className="w-5 h-5" />
     },
     {
-      title: "Qualité Certifiée",
-      description: "Standards premium",
+      title: "Qualité Premium",
+      description: "Produits certifiés",
       icon: <ShieldCheck className="w-5 h-5" />
     },
     {
-      title: "Service Dédié",
-      description: "Assistance personnalisée",
+      title: "Support 7j/7",
+      description: "Conseils via WhatsApp",
       icon: <Headphones className="w-5 h-5" />
     }
   ];
 
   return (
-    <section id="benefits" className="py-32 bg-stone-900 text-stone-100 overflow-hidden relative">
+    <section id="benefits" className="py-20 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, i) => (
-            <div key={i} className="flex flex-col gap-6">
-              <div className="text-primary w-12 h-12 flex items-center justify-center border border-stone-800 rounded-full">
+            <div key={i} className="flex flex-col gap-3">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                 {feature.icon}
               </div>
               <div>
-                <h3 className="text-[10px] font-black uppercase tracking-[0.3em] mb-2">{feature.title}</h3>
-                <p className="text-stone-400 font-light italic text-sm leading-relaxed">{feature.description}</p>
+                <h3 className="text-sm font-black uppercase text-slate-800 tracking-tight">{feature.title}</h3>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -148,48 +181,109 @@ export function Benefits() {
   );
 }
 
+export function CategoryLinks() {
+  const categories = [
+    { 
+      name: "Accessories", 
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
+    },
+    { 
+      name: "Bags", 
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+      )
+    }
+  ];
+
+  return (
+    <div className="bg-white border-b border-slate-100">
+      <div className="max-w-7xl mx-auto flex flex-row">
+        {categories.map((cat, i) => (
+          <div key={i} className="flex-1 flex flex-col items-center justify-center py-12 border-r border-slate-100 last:border-r-0 hover:bg-slate-50 transition-colors cursor-pointer group">
+            <div className="text-slate-900 mb-4 group-hover:scale-110 transition-transform">
+              {cat.icon}
+            </div>
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-slate-900 border-b-2 border-transparent group-hover:border-slate-900 transition-all pb-1">{cat.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function BottomNav() {
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-100 md:hidden flex justify-around items-center h-20 px-4 shadow-[0_-4px_10px_rgba(0,0,0,0.02)]">
+      <Link to="/" className="flex flex-col items-center gap-1.5 text-primary">
+        <Home className="w-6 h-6" strokeWidth={1.5} />
+        <span className="text-[9px] font-bold uppercase tracking-widest">Home</span>
+      </Link>
+      <button className="flex flex-col items-center gap-1.5 text-slate-400">
+        <Search className="w-6 h-6" strokeWidth={1.5} />
+        <span className="text-[9px] font-bold uppercase tracking-widest">Search</span>
+      </button>
+      <button className="flex flex-col items-center gap-1.5 text-slate-400 relative">
+        <ShoppingCart className="w-6 h-6" strokeWidth={1.5} />
+        <span className="absolute -top-1 -right-1 bg-primary text-white text-[8px] font-black w-4 h-4 flex items-center justify-center rounded-full">0</span>
+        <span className="text-[9px] font-bold uppercase tracking-widest">Cart</span>
+      </button>
+      <button className="flex flex-col items-center gap-1.5 text-slate-400">
+        <User className="w-6 h-6" strokeWidth={1.5} />
+        <span className="text-[9px] font-bold uppercase tracking-widest">My Account</span>
+      </button>
+    </div>
+  );
+}
+
 export function Footer() {
   return (
-    <footer className="bg-stone-900 text-stone-100 py-24">
+    <footer className="bg-slate-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
-          <div className="flex flex-col gap-10">
-            <h4 className="text-[10px] font-black uppercase text-stone-500 tracking-[0.4em]">La Maison</h4>
-            <div className="flex items-center gap-3">
-              <span className="text-2xl font-serif italic font-bold tracking-tighter">
-                Ecoplastique<span className="text-primary">.</span>
-              </span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
+          <div className="flex flex-col gap-6">
+            <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-[0.3em]">À Propos</h4>
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-primary rounded flex items-center justify-center text-[10px] font-bold">E</div>
+              <span className="text-lg font-black uppercase tracking-tighter">ECOPLASTIQUE</span>
             </div>
-            <p className="text-stone-400 text-sm font-light italic leading-relaxed max-w-xs">
-              Spécialiste marocain du confort médical et de la protection sur-mesure. L'excellence au service de votre foyer.
+            <p className="text-slate-400 text-sm font-medium leading-relaxed max-w-xs">
+              Votre partenaire pour un foyer plus confortable et mieux protégé. Spécialiste du sur-mesure au Maroc.
             </p>
           </div>
           
-          <div className="flex flex-col gap-10 border-stone-800 md:border-l md:pl-20">
-            <h4 className="text-[10px] font-black uppercase text-stone-500 tracking-[0.4em]">Explorer</h4>
-            <ul className="flex flex-col gap-6 text-[11px] font-bold uppercase tracking-[0.2em]">
-              <li><Link to="/" className="text-stone-100 border-b border-stone-100 pb-0.5">Collection 2026</Link></li>
-              <li><a href="#products" className="text-stone-400 hover:text-white transition-colors">Boutique en ligne</a></li>
-              <li><a href="#benefits" className="text-stone-400 hover:text-white transition-colors">Notre Engagement</a></li>
+          <div className="flex flex-col gap-6 border-slate-800 md:border-l md:pl-12 lg:pl-20">
+            <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-[0.3em]">Navigation</h4>
+            <ul className="flex flex-col gap-4 text-xs font-bold uppercase tracking-widest">
+              <li><Link to="/" className="text-primary hover:text-white transition-colors">Accueil</Link></li>
+              <li><a href="#products" className="hover:text-primary transition-colors">Produits</a></li>
+              <li><a href="#benefits" className="hover:text-primary transition-colors">Avantages</a></li>
             </ul>
           </div>
           
-          <div className="flex flex-col gap-10">
-            <h4 className="text-[10px] font-black uppercase text-stone-500 tracking-[0.4em]">Contact</h4>
-            <div className="flex flex-col gap-6 text-[11px] font-bold uppercase tracking-[0.2em] text-stone-300">
-              <span className="hover:text-primary transition-colors cursor-pointer border-b border-stone-800 pb-4">contact@ecoplastique.ma</span>
-              <div className="flex flex-col gap-2">
-                <span className="text-[10px] text-stone-500 lowercase italic tracking-normal">Direct WhatsApp</span>
-                <span className="text-lg font-serif italic text-white tracking-tighter">+212 600 000 000</span>
+          <div className="flex flex-col gap-6">
+            <h4 className="text-[10px] font-black uppercase text-slate-500 tracking-[0.3em]">Contact</h4>
+            <div className="flex flex-col gap-4 text-xs font-bold uppercase tracking-widest text-slate-300">
+              <span className="hover:text-primary transition-colors cursor-pointer">Contact@ecoplastique.ma</span>
+              <span className="hover:text-primary transition-colors cursor-pointer">+212 600 000 000</span>
+              <div className="pt-4">
+                <div className="bg-slate-800 p-4 rounded-2xl inline-flex items-center gap-6">
+                   <span className="text-[10px] font-medium leading-none text-slate-400">Des questions ?</span>
+                   <a 
+                    href="https://wa.me/212600000000"
+                    className="bg-white text-slate-900 px-4 py-2 rounded-full text-[10px] font-black uppercase hover:scale-105 transition-transform"
+                   >
+                     Chatter
+                   </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div className="mt-32 pt-10 border-t border-stone-800 text-center">
-            <p className="text-[10px] font-medium text-stone-600 uppercase tracking-[0.3em]">
-                © {new Date().getFullYear()} Ecoplastique Maroc • Tous droits réservés
-            </p>
         </div>
       </div>
     </footer>
